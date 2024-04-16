@@ -1,7 +1,7 @@
-﻿using SuperHeroAPI.Data.Repository.Users;
-using SuperHeroAPI.Models;
+﻿using PeoplePrtal.Data.Repository.Users;
+using PeoplePrtal.Models;
 
-namespace SuperHeroAPI.Services
+namespace PeoplePrtal.Services
 {
     public interface IUserService
     {

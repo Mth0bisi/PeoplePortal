@@ -22,7 +22,7 @@ export class TransactionFormComponent implements OnInit, AfterViewChecked{
     accountCode: [0, [Validators.required]],
     transactionDate: ['', [Validators.required]],
     amount: [0, [Validators.required]],
-    captureDate: ['', [Validators.required]],
+    captureDate: ['', []],
     description: ['', [Validators.required]],
     type: ['', [Validators.required]]
   });
@@ -77,7 +77,7 @@ export class TransactionFormComponent implements OnInit, AfterViewChecked{
       amount: this.transactionForm.value.amount!,
       transactionDate: this.transactionForm.value.transactionDate!,
       captureDate: this.transactionForm.value.captureDate!,
-      accountCode: this.transactionForm.value.accountCode!,
+      accountCode: this.accountCode,
       code: this.transactionForm.value.code!,
       description: this.transactionForm.value.description!,
       type: this.transactionForm.value.type!
@@ -89,13 +89,14 @@ export class TransactionFormComponent implements OnInit, AfterViewChecked{
         .subscribe(() => {
           console.log('success');
           this.toaster.success("Record updated sucessfully.");
-          this.router.navigateByUrl('/transaction/' + this.transactionCode);
+          this.router.navigateByUrl('/transactions/' + this.transactionCode);
         });
     } else {
+      console.log(this.accountCode);
       this.http.createTransaction(transaction).subscribe(() => {
         console.log('success');
         this.toaster.success("Record added sucessfully.");
-        this.router.navigateByUrl('/transaction/' + this.accountCode);
+        this.router.navigateByUrl('/transactions/' + this.accountCode);
       });
     }
   }

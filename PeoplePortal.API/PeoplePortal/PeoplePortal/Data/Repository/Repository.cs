@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Data;
+using PeoplePrtal.Data;
 
-namespace SuperHeroAPI.Data.Repository
+namespace PeoplePrtal.Data.Repository
 {
     public interface IRepository<T> where T : class
     {

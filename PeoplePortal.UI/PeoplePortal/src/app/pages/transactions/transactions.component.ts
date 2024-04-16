@@ -44,4 +44,8 @@ navigateCreate(): void {
   console.log(this.code);
   this.router.navigateByUrl('/create-transaction/' + this.code);
 }
+
+goBack(): void  {
+  this.router.navigateByUrl('/accounts/' + this.code);
+}
 }

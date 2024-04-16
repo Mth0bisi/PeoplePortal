@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SuperHeroAPI.Data;
+using PeoplePrtal.Data;
 
 #nullable disable
 
-namespace SuperHeroAPI.Migrations
+namespace PeoplePrtal.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20211118163245_CreateInitial")]
@@ -23,7 +23,7 @@ namespace SuperHeroAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SuperHeroAPI.SuperHero", b =>
+            modelBuilder.Entity("PeoplePrtal.SuperHero", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

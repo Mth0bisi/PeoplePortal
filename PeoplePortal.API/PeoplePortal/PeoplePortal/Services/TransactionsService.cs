@@ -1,7 +1,7 @@
-﻿using SuperHeroAPI.Data.Repository.Transactions;
-using SuperHeroAPI.Models;
+﻿using PeoplePrtal.Data.Repository.Transactions;
+using PeoplePrtal.Models;
 
-namespace SuperHeroAPI.Services
+namespace PeoplePrtal.Services
 {
     public interface ITransactionsService
     {

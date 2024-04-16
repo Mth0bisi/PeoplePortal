@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Models;
+using PeoplePrtal.Models;
 
-namespace SuperHeroAPI.Data
+namespace PeoplePrtal.Data
 {
     public partial class DataContext : DbContext
     {

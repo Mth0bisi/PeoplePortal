@@ -1,10 +1,10 @@
-﻿using SuperHeroAPI.Data.Repository.Accounts;
-using SuperHeroAPI.Data.Repository.Persons;
-using SuperHeroAPI.Models;
-using SuperHeroAPI.Models.ViewModel;
+﻿using PeoplePrtal.Data.Repository.Accounts;
+using PeoplePrtal.Data.Repository.Persons;
+using PeoplePrtal.Models;
+using PeoplePrtal.Models.ViewModel;
 using System.Security.Principal;
 
-namespace SuperHeroAPI.Services
+namespace PeoplePrtal.Services
 {
     public interface IAccountsService
     {
@@ -15,7 +15,7 @@ namespace SuperHeroAPI.Services
         bool CheckPersonAccountsClosedStatus(List<AccountVM> accounts);
         Task UpdateAccountDetails(AccountVM account);
         void UpdateAccountTransaction(string accountNumber, string oldTransactionType, string newTransactionType, decimal oldAmount, decimal newAmount);
-        void TransactAccount(string accountNumber, string transactionType, decimal amount);
+        Task TransactAccount(string accountNumber, string transactionType, decimal amount);
     }
     public class AccountsService: IAccountsService
     {
@@ -41,10 +41,9 @@ namespace SuperHeroAPI.Services
         public async Task<List<AccountVM>> GetPersonAccounts(int personCode)
         => await _accountsRepository.FindPersonAccounts(personCode);
 
-        public async void TransactAccount(string accountNumber, string transactionType, decimal amount)
+        public async Task TransactAccount(string accountNumber, string transactionType, decimal amount)
         {
-            _accountsRepository.TransactAccount(accountNumber, transactionType, amount);
-            await _accountsRepository.Save();
+            await _accountsRepository.TransactAccount(accountNumber, transactionType, amount);
         }
 
         public async Task UpdateAccountDetails(AccountVM account)

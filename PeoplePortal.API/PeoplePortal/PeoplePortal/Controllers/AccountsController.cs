@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SuperHeroAPI.Models;
-using SuperHeroAPI.Models.ViewModel;
-using SuperHeroAPI.Services;
+using PeoplePrtal.Models;
+using PeoplePrtal.Models.ViewModel;
+using PeoplePrtal.Services;
 
-namespace SuperHeroAPI.Controllers
+namespace PeoplePrtal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

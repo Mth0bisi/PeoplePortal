@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SuperHeroAPI.Models;
-using SuperHeroAPI.Models.ViewModel;
-using SuperHeroAPI.Services;
+using PeoplePrtal.Models;
+using PeoplePrtal.Models.ViewModel;
+using PeoplePrtal.Services;
 using System.Security.Principal;
 
-namespace SuperHeroAPI.Controllers
+namespace PeoplePrtal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -44,7 +44,7 @@ namespace SuperHeroAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<Transaction>>> CreateTransaction(Transaction transaction)
+        public async Task<ActionResult<List<Transaction>>> CreateTransaction([FromBody]TransactionVM transaction)
         {
             try
             {
@@ -55,11 +55,19 @@ namespace SuperHeroAPI.Controllers
                 if (account == null)
                     return BadRequest("Transaction account does not exist.");
 
+                var newTransaction = new Transaction
+                {
+                    AccountCode = transaction.AccountCode,
+                    Amount = transaction.Amount,
+                    Description = transaction.Description,
+                    Type = transaction.Type,
+                    TransactionDate = DateTime.Parse(transaction.TransactionDate),
+                    CaptureDate = DateTime.UtcNow,
+                };
 
-                transaction.CaptureDate = DateTime.UtcNow;
-                await _transactionsService.CreateTransaction(transaction);
+                await _transactionsService.CreateTransaction(newTransaction);
 
-                _accountsService.TransactAccount(account.AccountNumber, transaction.Type, transaction.Amount);
+                await _accountsService.TransactAccount(account.AccountNumber, transaction.Type, transaction.Amount);
 
                 return Ok(await _transactionsService.GetAccountTransactions(account.Code));
             }
@@ -70,7 +78,7 @@ namespace SuperHeroAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<List<Person>>> UpdateTransaction(Transaction transaction)
+        public async Task<ActionResult<List<Person>>> UpdateTransaction(TransactionVM transaction)
         {
             try
             {

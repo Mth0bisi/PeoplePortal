@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Data.Repository.Accounts;
-using SuperHeroAPI.Models;
+using PeoplePrtal.Data.Repository.Accounts;
+using PeoplePrtal.Models;
 using System;
 using System.Collections;
 using System.Text;
 
-namespace SuperHeroAPI.Data.Repository.Persons
+namespace PeoplePrtal.Data.Repository.Persons
 {
     public interface IPersonsRepository : IRepository<Person>
     {

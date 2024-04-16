@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Models;
-using SuperHeroAPI.Models.ViewModel;
+using PeoplePrtal.Models;
+using PeoplePrtal.Models.ViewModel;
 
-namespace SuperHeroAPI.Data.Repository.Accounts
+namespace PeoplePrtal.Data.Repository.Accounts
 {
     public interface IAccountsRepository : IRepository<Account>
     {
         Task<List<AccountVM>> FindPersonAccounts(int personCode);
         Task<AccountVM?> FindByAccountNumberAsync(string accountNumber);
         void UpdateAccountTransaction(string accountNumber, string oldTransactionType, string newTransactionType, decimal oldAmount, decimal newAmount);
-        void TransactAccount(string accountNumber, string transactionType, decimal amount);
+        Task TransactAccount(string accountNumber, string transactionType, decimal amount);
         Task UpdateAccountStatus(int accountCode, string status);
         Task CreateAccount(Account account);
         Task UpdateAccount(AccountVM account);
@@ -77,15 +77,19 @@ namespace SuperHeroAPI.Data.Repository.Accounts
         public async Task<string> GetAccountStatus(int accountCode) 
             => await _context.Status.Where(s => s.AccountCode == accountCode).Select(a => a.StatusType).FirstOrDefaultAsync();
 
-        public async void TransactAccount(string accountNumber, string transactionType, decimal amount)
+        public async Task TransactAccount(string accountNumber, string transactionType, decimal amount)
         {
-            var account = await FindByAccountNumberAsync(accountNumber);
+            var accountVM = await FindByAccountNumberAsync(accountNumber);
+            var account = await GetByCode(accountVM.Code);
             if (account != null)
             {
                 if (transactionType.ToLower().Equals("debit"))
                     account.OutstandingBalance = account.OutstandingBalance + amount;
                 else
                     account.OutstandingBalance = account.OutstandingBalance - amount;
+
+                _context.Accounts.Update(account);
+                await _context.SaveChangesAsync();
             }
         }
 

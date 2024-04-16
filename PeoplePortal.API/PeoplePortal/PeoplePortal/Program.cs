@@ -1,14 +1,14 @@
-global using SuperHeroAPI.Data;
+global using PeoplePrtal.Data;
 global using Microsoft.EntityFrameworkCore;
-using SuperHeroAPI.Models;
-using SuperHeroAPI.Data.Repository;
-using SuperHeroAPI.Services;
+using PeoplePrtal.Models;
+using PeoplePrtal.Data.Repository;
+using PeoplePrtal.Services;
 using Microsoft.AspNetCore.Authentication;
-using SuperHeroAPI.Data.Repository.Accounts;
-using SuperHeroAPI.Data.Repository.Transactions;
-using SuperHeroAPI.Data.Repository.Persons;
-using SuperHeroAPI.Data.Repository.Users;
-using SuperHeroAPI.Security;
+using PeoplePrtal.Data.Repository.Accounts;
+using PeoplePrtal.Data.Repository.Transactions;
+using PeoplePrtal.Data.Repository.Persons;
+using PeoplePrtal.Data.Repository.Users;
+using PeoplePrtal.Security;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 

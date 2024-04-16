@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace SuperHeroAPI.Migrations
+namespace PeoplePrtal.Migrations
 {
     public partial class Status : Migration
     {

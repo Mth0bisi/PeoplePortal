@@ -1,4 +1,4 @@
-﻿namespace SuperHeroAPI.Models.ViewModel
+﻿namespace PeoplePrtal.Models.ViewModel
 {
     public class AccountVM
     {

@@ -20,7 +20,7 @@ export class TransactionServiceService {
   }
 
   createTransaction(transaction: ITransaction){
-    return this._http.post(this.apiUrl + '/api/CreateTransaction', transaction);
+    return this._http.post(this.apiUrl + '/api/Transactions', transaction);
   }
 
   updateTransaction(transaction: ITransaction) {

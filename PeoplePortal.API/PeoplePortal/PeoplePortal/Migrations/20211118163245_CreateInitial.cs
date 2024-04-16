@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace SuperHeroAPI.Migrations
+namespace PeoplePrtal.Migrations
 {
     public partial class CreateInitial : Migration
     {

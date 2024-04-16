@@ -46,7 +46,7 @@
             </div>
             <div class="w-full flex flex-wrap">
               <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [max]="maxDate">
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [max]="maxDate" formControlName="transactionDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -60,7 +60,7 @@
                     matInput
                     placeholder="Capture Date"
                     formControlName="captureDate"
-
+                    readonly
                   />
                 </mat-form-field>
               </div>

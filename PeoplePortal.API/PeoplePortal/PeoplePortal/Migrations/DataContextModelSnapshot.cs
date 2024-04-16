@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SuperHeroAPI.Data;
+using PeoplePrtal.Data;
 
 #nullable disable
 
-namespace SuperHeroAPI.Migrations
+namespace PeoplePrtal.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace SuperHeroAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Account", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Account", b =>
                 {
                     b.Property<int>("Code")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace SuperHeroAPI.Migrations
                     b.ToTable("Accounts");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Person", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Person", b =>
                 {
                     b.Property<int>("Code")
                         .ValueGeneratedOnAdd()
@@ -92,7 +92,7 @@ namespace SuperHeroAPI.Migrations
                     b.ToTable("Persons");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Status", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Status", b =>
                 {
                     b.Property<int>("Code")
                         .ValueGeneratedOnAdd()
@@ -112,7 +112,7 @@ namespace SuperHeroAPI.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Transaction", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Transaction", b =>
                 {
                     b.Property<int>("Code")
                         .ValueGeneratedOnAdd()
@@ -155,9 +155,9 @@ namespace SuperHeroAPI.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Account", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Account", b =>
                 {
-                    b.HasOne("SuperHeroAPI.Models.Person", "PersonCodeNavigation")
+                    b.HasOne("PeoplePrtal.Models.Person", "PersonCodeNavigation")
                         .WithMany("Accounts")
                         .HasForeignKey("PersonCode")
                         .IsRequired()
@@ -166,9 +166,9 @@ namespace SuperHeroAPI.Migrations
                     b.Navigation("PersonCodeNavigation");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Transaction", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Transaction", b =>
                 {
-                    b.HasOne("SuperHeroAPI.Models.Account", "AccountCodeNavigation")
+                    b.HasOne("PeoplePrtal.Models.Account", "AccountCodeNavigation")
                         .WithMany("Transactions")
                         .HasForeignKey("AccountCode")
                         .IsRequired()
@@ -177,12 +177,12 @@ namespace SuperHeroAPI.Migrations
                     b.Navigation("AccountCodeNavigation");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Account", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Account", b =>
                 {
                     b.Navigation("Transactions");
                 });
 
-            modelBuilder.Entity("SuperHeroAPI.Models.Person", b =>
+            modelBuilder.Entity("PeoplePrtal.Models.Person", b =>
                 {
                     b.Navigation("Accounts");
                 });

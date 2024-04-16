@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "SuperHeroAPI": {
+    "PeoplePrtal": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

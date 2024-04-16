@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using SuperHeroAPI.Models;
+using PeoplePrtal.Models;
 
-namespace SuperHeroAPI.Data.Repository.Transactions
+namespace PeoplePrtal.Data.Repository.Transactions
 {
     public interface ITransactionRepository : IRepository<Transaction>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SuperHeroAPI.Models
+namespace PeoplePrtal.Models
 {
     public partial class Status
     {
