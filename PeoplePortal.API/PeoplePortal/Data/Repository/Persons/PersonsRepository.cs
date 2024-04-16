@@ -1,0 +1,32 @@
+﻿using Microsoft.EntityFrameworkCore;
+using SuperHeroAPI.Data.Repository.Accounts;
+using SuperHeroAPI.Models;
+using System;
+using System.Collections;
+using System.Text;
+
+namespace SuperHeroAPI.Data.Repository.Persons
+{
+    public interface IPersonsRepository : IRepository<Person>
+    {
+        Task<Person?> FindByIdNumberAsync(string IdNumber);
+    }
+    public class PersonsRepository : Repository<Person>, IPersonsRepository
+    {
+        private readonly IAccountsRepository _accountsRepository;
+        public PersonsRepository(DataContext context, IAccountsRepository accountsRepository) : base(context)
+        {
+            _accountsRepository = accountsRepository;
+        }
+
+        public async Task<Person?> FindByIdNumberAsync(string IdNumber)
+        {
+            if (!String.IsNullOrEmpty(IdNumber))
+            {
+                return await _entities.Where(p => p.IdNumber == IdNumber).FirstOrDefaultAsync();
+            }
+
+            return null;
+        }
+    }
+}
