@@ -1,0 +1,77 @@
+<app-navbar></app-navbar>
+<div class="card">
+  <div class="card-header bg-success text-white">
+    @if(isEdit){
+      <h4>Update Person Detail</h4>
+      }@else {
+      <h4>New Person</h4>
+      }
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <form [formGroup]="personForm" (ngSubmit)="save()">
+          <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full flex flex-wrap">
+              <mat-label>Name</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Name"
+                formControlName="name"
+              />
+            </mat-form-field>
+          </div>
+          <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+              <mat-label>Surname</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="Surname"
+                formControlName="surname"
+              />
+            </mat-form-field>
+          </div>
+          <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+              <mat-label>ID Number</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="ID Number"
+                formControlName="idNumber"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="flex justify-center">
+            @if(isEdit){
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!personForm.valid"
+            >
+              Update
+            </button>
+            }@else {
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="!personForm.valid"
+            >
+              Add
+            </button>
+            }
+            <button
+            mat-raised-button
+            color="danger"
+            routerLink="/persons"
+          >
+            Cancel
+          </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

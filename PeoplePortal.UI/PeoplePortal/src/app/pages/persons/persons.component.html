@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="card">
+  <div class="card-header bg-success text-white">
+    Persons List
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="flex justify-end p-8">
+        <button routerLink="/create-person" class="btn btn-success" type="submit">
+          Add Person
+        </button>
+      </div>
+      <br>
+    </div>
+    <div class="row">
+      <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">ID Number</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of personsList| paginate: { itemsPerPage: pageSize, currentPage: p, totalItems: total }">
+                <th scope="row">{{person.code}}</th>
+                <td>{{person.name}}</td>
+                <td>{{person.surname}}</td>
+                <td>{{person.idNumber}}</td>
+                <td>
+                 <button type="button" class="btn btn-outline-warning"  (click)="navigateDetails(person.idNumber)">Update</button>
+                  <button type="button" class="btn btn-outline-info" (click)="navigateAccounts(person.code)">Accounts</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+    </div>
+  </div>

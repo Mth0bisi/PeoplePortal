@@ -1,0 +1,78 @@
+  <app-navbar></app-navbar>
+  <div class="card">
+    <div class="card-header bg-success text-white">
+      @if(isEdit){
+        <h4>Update Account Detail</h4>
+        }@else {
+        <h4>New Account</h4>
+        }
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <form [formGroup]="accountForm" (ngSubmit)="save()">
+            <div class="w-full flex flex-wrap">
+              <mat-form-field class="w-full flex flex-wrap">
+                <mat-label>Account Number</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Account Number"
+                  formControlName="accountNumber"
+                />
+              </mat-form-field>
+            </div>
+            <div class="w-full flex flex-wrap">
+              <mat-form-field class="w-full">
+                <mat-label>Outstanding Balance</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Outstanding Balance"
+                  formControlName="outstandingBalance"
+                  readonly
+                />
+              </mat-form-field>
+            </div>
+            <div class="w-full flex flex-wrap">
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select [(ngModel)]="selectedOption" formControlName="accountStatus">
+                  <mat-option *ngFor="let option of options" [value]="option.value">
+                    {{ option.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <div class="flex justify-center">
+              @if(isEdit){
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!accountForm.valid"
+              >
+                Update
+              </button>
+              }@else {
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="!accountForm.valid"
+              >
+                Add
+              </button>
+              }
+              <button
+              mat-raised-button
+              color="danger"
+              (click)="goBack()"
+            >
+              Cancel
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
